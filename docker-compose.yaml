@@ -5,4 +5,4 @@ services:
     container_name: reddit_comment_nuker
     volumes:
       - ./config.ini:/app/config.ini
-    command: python reddit_comment_nuker.py
+    command: python -u reddit_comment_nuker.py

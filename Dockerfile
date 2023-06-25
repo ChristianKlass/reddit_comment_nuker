@@ -16,5 +16,5 @@ EXPOSE 80
 # Define environment variable
 ENV NAME reddit_comment_nuker
 
-# Run reddit_comment_nuker.py when the container launches
-CMD ["python", "reddit_comment_nuker.py"]
+# Run reddit_comment_nuker.py with unbuffered output when the container launches
+CMD ["python", "-u", "reddit_comment_nuker.py"]

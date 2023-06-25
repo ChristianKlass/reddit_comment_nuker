@@ -2,4 +2,4 @@
 client_id = your_client_id
 client_secret = your_client_secret
 username=your_reddit_username
-password=your_reddit_password (use quotes "" if you have strange characters in there)
+password=your_reddit_password 

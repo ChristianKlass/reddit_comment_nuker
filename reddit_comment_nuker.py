@@ -4,9 +4,10 @@ import string
 import random
 import requests
 import os
+import configparser
 
 # create a ConfigParser object and read the config.ini file
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(interpolation=None)
 config.read('config.ini')
 
 # get the values from the [reddit] section of the config.ini file
@@ -15,13 +16,19 @@ client_secret = config.get('reddit', 'client_secret')
 username = config.get('reddit', 'username')
 password = config.get('reddit', 'password')
 
+# print all the values gotten from the config.ini file
+print("client_id: " + client_id)
+print("client_secret: " + client_secret)
+print("username: " + username)
+print("password: " + password)
+
 # create a reddit instance
 reddit = praw.Reddit(
     client_id=client_id,
     client_secret=client_secret,
     username=username,
     password=password,
-    user_agent='do not tell me what to do',
+    user_agent='do not tell me what to do/0.0.1234882399/xx',
     validate_on_submit=True
 )
 

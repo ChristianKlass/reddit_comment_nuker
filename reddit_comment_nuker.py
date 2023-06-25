@@ -5,6 +5,12 @@ import random
 import requests
 import os
 import configparser
+import logging
+
+import logging
+
+# configure the logging module
+logging.basicConfig(filename='reddit_comment_nuker.log', level=logging.DEBUG)
 
 # create a ConfigParser object and read the config.ini file
 config = configparser.ConfigParser(interpolation=None)
@@ -17,10 +23,10 @@ username = config.get('reddit', 'username')
 password = config.get('reddit', 'password')
 
 # print all the values gotten from the config.ini file
-print("client_id: " + client_id)
-print("client_secret: " + client_secret)
-print("username: " + username)
-print("password: " + password)
+logging.info("client_id: " + client_id)
+logging.info("client_secret: " + client_secret)
+logging.info("username: " + username)
+logging.info("password: " + password)
 
 # create a reddit instance
 reddit = praw.Reddit(
@@ -81,11 +87,11 @@ for comment in comments:
     random_string = ''
     index = comments.index(comment)
     num_paragraphs = random.randint(5, 8)
-    print("Changing comment {}.".format(index))
-    print("The new comment will have " + str(num_paragraphs) + " nonsensical paragraphs.")
+    logging.info("Changing comment {}.".format(index))
+    logging.info("The new comment will have " + str(num_paragraphs) + " nonsensical paragraphs.")
 
     for i in range(num_paragraphs):
         random_string += generate_random_paragraph()
     
     comment.edit(random_string)
-    print ("Done!")
+    logging.info ("Done!")
